@@ -1,8 +1,8 @@
 from __future__ import print_function  # Only needed for Python 2
-import random
 import time
 import zerorpc
 from run_simulation import Simulation
+import secrets
 
 
 totalWeights = 4
@@ -14,7 +14,7 @@ TOTAL_GENS = 1000
 
 
 def getRand(range=1):
-    return random.uniform(-range, range)
+    return secrets.SystemRandom().uniform(-range, range)
 
 class Chromosome(object):
 
@@ -127,11 +127,11 @@ class GeneticAlgorithm(object):
         print("candidates: " + str(len(top)**numVars))
         for i in xrange(len(top)**numVars):
             tempList = []
-            invert = random.randint(0,numVars)
+            invert = secrets.SystemRandom().randint(0,numVars)
 
             for j in xrange(numVars):
                 w = top[(i // (len(top) ** j)) % len(top)].weights[j]
-                if j == invert and random.uniform(0,1) < 0.2:
+                if j == invert and secrets.SystemRandom().uniform(0,1) < 0.2:
                     w = -w
                 tempList.append(w)
             weightList.append(tempList)
