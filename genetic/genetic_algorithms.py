@@ -1,4 +1,3 @@
-from __future__ import print_function  # Only needed for Python 2
 import time
 import zerorpc
 from run_simulation import Simulation
